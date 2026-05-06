@@ -26,7 +26,27 @@
 
 name: Deploy to Amazon ECS
 
+
 on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'Space-separated list of URLs to download'
+        required: true
+        type: string
+      mode:
+        description: 'Download mode'
+        required: false
+        default: 'normal'
+        type: choice
+        options:
+          - normal
+          - zip
+      password:
+        description: 'Password for zip files (optional)'
+        required: false
+        default: ''
+        type: string
   push:
     branches: [ "main" ]
 
